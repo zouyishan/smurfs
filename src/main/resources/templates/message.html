@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:text-align="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZYS-Blog 留言板</title>
+  <link th:href="@{/images/me.png}" rel="icon" type="image/x-ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/me.css}">
+    <link rel="stylesheet" th:href="@{/css/zyscomment.css}">
+
+    <style>
+        #ziti {
+            font-family: "楷体", "楷体_GB2312";
+        }
+        input::-webkit-input-placeholder {
+            color: #51c4d3;
+        }
+    </style>
+
+</head>
+<body>
+
+<!--导航-->
+<div th:replace="~{constant/header.html}"></div>
+
+
+<!--顶部图片-->
+<div class="m-bg-type_outer" style="width: 100%;height: 40%">
+  <img src="https://zouyishan.oss-cn-beijing.aliyuncs.com/images/20210129201024.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%">
+  <div class="m-bg-class_cover">
+    <div class="ui container" style="position: relative ;bottom: -540px;">
+      <div class="m-font-size-title m-right-bottom" align="center" style="font-family:'STXingkai'; color: #0eb0c9">留言板</div>
+      <div class="m-font-size-text-init-title m-margin-top" align="center" style="color: #0eb0c9">虽然只是短暂的擦身, 尽管如此, 我却仍然想珍惜这所有的一切</div>
+    </div>
+  </div>
+</div>
+
+
+<!--中间内容-->
+<div id="waypoint" class="m-margin- animated fadeIn">
+
+  <div class="ui container m-opacity box-shadow-max" style="margin-bottom: -57px; padding: 10px">
+      <!--                新增留言-->
+      <div id="message-form" class="ui form" style="color: #51c4d3">
+          <form th:action="@{/addMessage}" method="post" onsubmit="return checkform()" style="color: #51c4d3">
+          <input type="hidden" name="parentMessage.id" value="-1" style="color: #51c4d3">
+          <!--                    留言区-->
+          <div class="field">
+              <textarea name="content" placeholder="请输入留言信息..." required></textarea>
+          </div>
+          <div class="ui grid">
+              <!--                    输入姓名-->
+              <div class="five wide column">
+
+              <div class="field m-mobile-wide m-margin-bottom-small">
+                  <div class="ui left icon input">
+                      <i class="user icon" style="color: #51c4d3"></i>
+
+                      <input type="text" name="name" id="fan" placeholder="Name" onblur="a()" required>
+
+                      <p id="userInfo"></p>
+                  </div>
+              </div>
+              </div>
+
+              <!--                        输入邮箱-->
+              <div class="five wide column">
+              <div class="field m-mobile-wide m-margin-bottom-small">
+                  <div class="ui left icon input">
+                      <i class="mail icon" style="color: #51c4d3"></i>
+                      <input type="email" name="email" placeholder="Email" id="place" required>
+                  </div>
+              </div>
+              </div>
+
+              <div class="right aligned six wide column">
+              <div class="field m-mobile-wide m-margin-bottom-small">
+                  <button id="messagepost-btn" type="submit" class="ui teal button m-mobile-wide"><i class="edit icon"></i>发布</button>
+              </div>
+              </div>
+          </div>
+          </form>
+      </div>
+
+
+
+
+      <div class="container">
+          <div class="col-xs-12">
+              <div class="ui threaded comments" style="max-width: 99%;">
+                  <h3 class="ui dividing header" id="ziti" style="font-size: 42px; margin-left: 10px; color: #51c4d3;" >留言</h3>
+              <!-- 评论 -->
+              <div class="commentList">
+                  <ul class="comment">
+                      <li th:each="message:${messageList}" id="hot-font">
+                          <div class="comment-body" id="comment-1">
+                              <div class="cheader">
+                                  <div style="height: 61px">
+                                    <img class="userImage" th:src="@{/images/me.png}">
+                                      <strong th:text="${message.getName()}" id="ziti" style="position: relative; display: block; top: -38px; left: 55px; font-size: 27px; color: #51c4d3"></strong>
+                                      <div class="timer" style="float: right; position: relative; display: block; top: -65px;">
+                                          <i class="fa fa-clock-o fa-fw"></i>
+                                          <span class="time" th:text="${#dates.format(message.getCreatetime(), 'yyyy-MM-dd HH:mm:ss')}"></span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="content" th:text="${message.getContent()}">
+                              </div>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+              </div>
+          </div>
+      </div>
+    <br>
+    <br>
+    <br>
+
+  </div>
+</div>
+
+<div th:replace="~{constant/footer.html}"></div>
+
+<!--Ajax检查是否有相同用户名， 和表单是否提交正确-->
+<script>
+    var is_ok = 0;
+    function a(){
+        var kk = document.getElementById("fan").value;
+        $.ajax({
+            url: "/checkname",
+            type: "post",
+            data: {"name":kk},
+            success: function (data) {
+                if ("no" == data) {
+                    $("#userInfo").css("color","green");
+                    $("#userInfo").html("没有相同用户名");
+                    is_ok = 1;
+                } else {
+                    $("#userInfo").css("color","red");
+                    $("#userInfo").html("有相同用户名");
+                    is_ok = 2;
+                }
+
+            }
+
+        })
+
+    }
+
+    function checkform() {
+        if (is_ok == 2) {
+            alert("有相同用户名");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</body>
+</html>

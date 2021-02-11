@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>删除留言</title>
+</head>
+<body>
+<ul th:each="message:${messageList}">
+    <li>
+        <p th:text="${message.getName()}"></p>
+        <p th:text="${message.getEmail()}"></p>
+        <p th:text="${message.getContent()}"></p>
+    </li>
+</ul>
+<br/>
+<br/>
+<br/>
+<br/>
+<form th:action="@{/deleteMessage}" method="post">
+    <input type="text" name="name" placeholder="输入想要删除留言的名字">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYS-Blog 时间轴</title>
+    <link th:href="@{/images/me.png}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/me.css}">
+    <link rel="stylesheet" th:href="@{/css/timeline.css}">
+</head>
+<body>
+<div th:replace="~{constant/header.html}"></div>
+<div class="doc-container m-padded-tb-massivex m-opacity" id="doc-container">
+    <th:block>
+        <section class="timeline">
+            <ul>
+                <li class="" th:each="say:${sayList}" >
+                    <div id="hot-font">
+                        <time th:text="${#dates.format(say.getCreatetime(), 'yyyy-MM-dd')}" style="color: white"></time>
+                        <div class="scientist" >
+                            <h3 th:text="${say.getContent()}" class="state" style="color: #51c4d3;"></h3>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </th:block>
+</div>
+<br/>
+<br/>
+<br/>
+
+<div th:replace="~{constant/footer.html}"></div>
+</body>
+</html>

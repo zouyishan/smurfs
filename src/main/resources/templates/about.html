@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZYS-Blog 关于我</title>
+     <link th:href="@{/images/me.png}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/me.css}">
+    <style>
+        #ziti {
+            font-family: "楷体", "楷体_GB2312";
+        }
+    </style>
+</head>
+<body>
+
+<!--导航-->
+<div th:replace="~{constant/header.html}"></div>
+
+
+<!--顶部背景图片-->
+<div class="m-bg-type_outer" style="width: 100%;height: 40%">
+    <img src="https://zouyishan.oss-cn-beijing.aliyuncs.com/images/20210129201024.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%">
+    <div class="m-bg-class_cover">
+        <div class="ui container" style="position: relative ;bottom: -540px;">
+            <div class="m-font-size-title" align="center" style="font-family:'STXingkai'; color: #0eb0c9">关于我</div>
+            <div class="m-font-size-text-init-title m-margin-top" align="center" style="color: #0eb0c9;">不是看到希望才坚持, 而是坚持了才会有希望</div>
+        </div>
+    </div>
+</div>
+
+<!--个人资料描述-->
+<div class="ui container m-opacity box-shadow-max" style="background: rgba(255, 255, 255, 0.2); position: relative; top: 55px;">
+    <div class="ui segment m-margin-" align="center" style="position: relative; top: 1px; height: 1258px">
+        <div class="m-margin-top-large" align="center">
+            <img class="ui circular image" align="center" th:src="@{/images/me.png}" style="width: 150px;height: 150px;" id="hot-font">
+        </div>
+
+    <div class="m-margin-top-small" style="font-size: x-large;font-family: Consolas; color: #51c4d3" align="center">ZYS-Blog</div>
+
+
+    <div class="m-margin-top" align="center" style="background: rgba(255, 255, 255, 0.5); position: relative; top: -15px;">
+        <a href="#" class="ui tencent circular icon button"><i class="user icon" style="color: #51c4d3"></i></a>
+        <a href="#" class="ui wechat circular icon button"><i class="weixin icon" style="color: #51c4d3"></i></a>
+        <a href="#" class="ui qq circular icon button"  data-position="bottom center"><i class="qq icon" style="color: #51c4d3"></i></a>
+        <a href="https://github.com/zouyishan" target="_blank" class="ui github circular icon button" data-content="点击跳转GitHub" data-position="bottom center"><i class="github icon" style="color: #51c4d3"></i></a>
+        <a href="https://www.luogu.com.cn/blog/honey-huangqin0522/" target="_blank" class="ui csdn circular icon button" data-content="点击跳转洛谷" data-position="bottom center"><i class="copyright outline icon" style="color: #51c4d3"></i></a>
+        <a href="#" class="ui email circular icon button" data-content="2983748714@qq.com" data-position="bottom center"><i class="envelope  icon" style="color: #51c4d3"></i></a>
+    </div>
+
+    <div class="ui tencent-qr flowing popup transition hidden" style="background: rgba(255, 255, 255, 0.5)">
+        <img th:src="@{/images/oneStar.jpg}" alt="" class="ui rounded image" style="width: 110px">
+        <div align="center">公众号</div>
+    </div>
+
+    <div class="ui wechat-qr flowing popup transition hidden" style="background: rgba(255, 255, 255, 0.5)">
+        <img th:src="@{/images/oneStar.jpg}" alt="" class="ui rounded image" style="width: 110px">
+        <div align="center">微信</div>
+    </div>
+    <div class="ui qq-qr flowing popup transition hidden" style="background: rgba(255, 255, 255, 0.5)">
+        <img  th:src="@{/images/QQ-question.jpg}" alt="" class="ui rounded image" style="width: 110px">
+        <div align="center">QQ</div>
+    </div >
+
+        <hr class="m-margin-top-small" style="width: 25%; border: none; background-color: #51c4d3; height: 1.15px; position: relative; top: -10px;">
+        <br>
+        <div style="background: rgba(255, 255, 255, 0.2); position: relative; top: -20px;">
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">00后</p>
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">爱编程、二刺猿、爱学习</p>
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">生活很美，总该做做自己喜欢的事</p>
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">真诚祝福看到这些文字的陌生人</p>
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">愿进网吧不只是因为无聊，还有热爱</p>
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">愿被生活打击后不只是堕落，还有迎难而上的勇气</p>
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">愿发现自己的喜欢后不是畏手畏脚，还有义无反顾的追求</p>
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">愿学习一门新东西时不只是看到其中的晦涩，还有其中的精妙</p>
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">愿对待每一次失去不是沉溺过去，还有能让你懂得更加珍惜当下</p>
+            <p style="color: #51c4d3; font-size: 20px" id="ziti">毕竟生活就是要开开心心，这样才有值得珍惜的意义啊！</p>
+        </div>
+        <hr class="m-margin-top-large" style="background-color: #51c4d3; width: 90%; border: none; height: 3px;">
+        <br>
+        <h2 class="m-margin-tb-tiny" style="font-size: 40px; font-weight: 900;color: #51c4d3; position: relative; top: -23px" id="ziti">打赏本站</h2>
+            <div class="ui basic label m-margin-tb-tiny" style="color: #51c4d3; position: relative; top: -26px; border: 3px solid #51c4d3;">
+            <p style="font-size: 18px; color: #51c4d3" id="ziti">每一次提笔的我们，就像街边的街头艺人，用笔唱着自己的歌谣。如果有一天你感动了，那么期待您请我们来一杯咖啡</p>
+            </div>
+            <div class="ui basic label" style="position: relative; top: -13px; border: 4px solid #51c4d3">
+                <div class="ui images" style="font-size: inherit !important;">
+                    <div class="image">
+                        <img th:src="@{/images/zhifupay.jpg}" alt="" class="ui rounded bordered image" id="hot-font" style="width: 180px">
+                        <div style="color: #51c4d3">支付宝</div>
+                    </div>
+                    <div class="image">
+                        <img th:src="@{/images/wechatpay.png}" alt="" class="ui rounded bordered image" id="hot-font" style="width: 180px">
+                        <div style="color: #51c4d3">微信</div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div th:replace="~{constant/footer.html}"></div>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <!--底部栏-->
+<!--    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
+    <!--底部栏-->
+    <footer style="margin-top: -19px">
+        <!--底部栏-->
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <footer class="ui inverted vertical segment m-padded-tb-massive m-opacity">
+            <!--容器-->
+            <div class="ui center aligned container">
+                <div class="ui inverted divided stackable grid">
+                    <div class="four wide column">
+                        <div style="font-size: large;font-weight: bold; color: #51c4d3" class="ui inverted m-text-thin m-text-spaced m-margin-top-max" >联系我</div>
+                        <div class="ui inverted link list">
+                            <div href="#" class="m-text-thin" style="color: #51c4d3">Email：honey.qin0522@gmail.com</div>
+                            <div href="#" class="m-text-thin" style="color: #51c4d3">QQ：2983748714</div>
+                        </div>
+                    </div>
+
+                    <div class="four wide column" >
+                        <div class="ui inverted link list">
+                            <div class="item">
+
+                                <!--微信二维码-->
+                                <div style="font-size: large;font-weight: bold; color: #51c4d3" class="ui inverted m-text-thin m-text-spaced " >微信</div>
+                                <img th:src="@{/images/oneStar.jpg}" id="hot-font" class="ui m-margin-top rounded image" alt="" style="width: 110px">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="four wide column">
+                        <div class="ui inverted link list">
+                            <div class="item">
+                                <!--微信二维码-->
+                                <div style="font-size: large;font-weight: bold; color: #51c4d3" class="ui inverted m-text-thin m-text-spaced " >QQ</div>
+                                <img th:src="@{/images/QQ-question.jpg}" id="hot-font" class="ui m-margin-top rounded image" alt="" style="width: 110px">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--博客运行时间统计-->
+                    <div class="four wide column">
+                        <div style="font-size: large;font-weight: bold" class="ui inverted  m-text-thin m-text-spaced m-margin-top"></div>
+                        <!--<p id="htmer_time" class="item m-text-thin"></p>-->
+                        <div id="blog-message">
+                            <div class="ui inverted link list" style="align-content: center;margin-top: 10px">
+                                <div class="m-font-size-text-init-title" style="text-align: left;margin-left: 75px; color: #51c4d3; font-size: 30px">
+                                    生命诚可贵
+                                </div>
+                                <br/>
+                                <div class="m-font-size-text-init-title" style="text-align: left;margin-left: 75px; color: #51c4d3; font-size: 30px">
+                                    爱情价更高
+                                </div>
+                                <br/>
+                                <div class="m-font-size-text-init-title" style="text-align: left;margin-left: 75px; color: #51c4d3; font-size: 30px">
+                                    若为自由故
+                                </div>
+                                <br/>
+                                <div class="m-font-size-text-init-title" style="text-align: left;margin-left: 75px; color: #51c4d3; font-size: 30px">
+                                    二者皆可抛
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui inverted section divider"></div>
+                <div style="color: #51c4d3;margin-top: -18px" class="ui inverted m-text-thin m-text-spaced">博客在各种困难面前艰难的运行了：<span id="htmer_time" class="item m-text-thin"></span> (*๓´╰╯`๓)</div>
+                <div style="color: #51c4d3">网站名: 今天也要学Java &nbsp&nbsp&nbsp&nbsp&nbsp备案号:<a rel="nofollow" href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">京ICP备2020036173号-1</a></div>
+            </div>
+            </div>
+
+
+        </footer>
+    </footer>
+    <script th:src="@{/lib/sakura/bubbleCursor.js}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+
+    <script>
+        // 运行时间统计
+        function secondToDate(second) {
+            if (!second) {
+                return 0;
+            }
+            var time = new Array(0, 0, 0, 0, 0);
+            if (second >= 365 * 24 * 3600) {
+                time[0] = parseInt(second / (365 * 24 * 3600));
+                second %= 365 * 24 * 3600;
+            }
+            if (second >= 24 * 3600) {
+                time[1] = parseInt(second / (24 * 3600));
+                second %= 24 * 3600;
+            }
+            if (second >= 3600) {
+                time[2] = parseInt(second / 3600);
+                second %= 3600;
+            }
+            if (second >= 60) {
+                time[3] = parseInt(second / 60);
+                second %= 60;
+            }
+            if (second > 0) {
+                time[4] = second;
+            }
+            return time;
+        }
+        function setTime() {
+            /*此处为网站的创建时间*/
+            var create_time = Math.round(new Date(Date.UTC(2020, 08, 11, 23, 00, 00)).getTime() / 1000);
+            var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+            currentTime = secondToDate((timestamp - create_time));
+            currentTimeHtml = currentTime[0] + '年' + currentTime[1] + '天'
+                + currentTime[2] + '时' + currentTime[3] + '分' + currentTime[4]
+                + '秒';
+            document.getElementById("htmer_time").innerHTML = currentTimeHtml;
+        }
+        setInterval(setTime, 1000);
+
+
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-show');
+
+        });
+
+        // 显示公众号
+        $('.tencent').popup({
+            popup : $('.tencent-qr'),
+            position: 'bottom center'
+        });
+
+        // 显示微信
+        $('.wechat').popup({
+            popup : $('.wechat-qr'),
+            position: 'bottom center'
+        });
+
+        // 显示QQ
+        $('.qq').popup({
+            popup : $('.qq-qr'),
+            position: 'bottom center'
+        });
+
+        // 显示邮箱
+        $('.email').popup();
+
+        // 显示CSDN
+        $('.csdn').popup();
+
+        // 显示github
+        $('.github').popup();
+
+        // 导航栏显示
+        var waypoint = new Waypoint({
+            element: document.getElementById('waypoint'),
+            handler: function(direction) {
+                if (direction == 'down') {
+                    $('#nav').show(500);
+                } else {
+                    $('#nav').hide(500);
+                }
+                console.log('Scrolled to waypoint!  ' + direction);
+            }
+        })
+    </script>
+
+
+<!--    小方块-->
+    <script>
+
+        !function(){
+
+            function n(n,e,t){
+
+                return n.getAttribute(e)||t
+
+            }
+
+            function e(n){
+
+                return document.getElementsByTagName(n)
+
+            }
+
+            function t(){
+
+                var t=e("script"),o=t.length,i=t[o-1];
+
+                return{
+
+                    l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",.5),c:n(i,"color","0,0,0"),n:n(i,"count",200)
+
+                }
+
+            }
+
+            function o(){
+
+                a=m.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,
+
+                    c=m.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight
+
+            }
+
+            function i(){
+
+                r.clearRect(0,0,a,c);
+
+                var n,e,t,o,m,l;
+
+                s.forEach(function(i,x){
+
+                    for(i.x+=i.xa,i.y+=i.ya,i.xa*=i.x>a||i.x<0?-1:1,i.ya*=i.y>c||i.y<0?-1:1,r.fillRect(i.x-.5,i.y-.5,1,1),e=x+1;e<u.length;e++)n=u[e],
+
+                    null!==n.x&&null!==n.y&&(o=i.x-n.x,m=i.y-n.y,
+
+                        l=o*o+m*m,l<n.max&&(n===y&&l>=n.max/2&&(i.x-=.03*o,i.y-=.03*m),
+
+                        t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=t/2,r.strokeStyle="rgba("+d.c+","+(t+.2)+")",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))
+
+                }),
+
+                    x(i)
+
+            }
+
+            var a,c,u,m=document.createElement("canvas"),
+
+                d=t(),l="c_n"+d.l,r=m.getContext("2d"),
+                x=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||
+
+                    function(n){
+
+                        window.setTimeout(n,1e3/45)
+
+                    },
+
+                w=Math.random,y={x:null,y:null,max:2e4};m.id=l,m.style.cssText="position:fixed;top:0;left:0;z-index:"+d.z+";opacity:"+d.o,e("body")[0].appendChild(m),o(),window.onresize=o,
+
+                window.onmousemove=function(n){
+
+                    n=n||window.event,y.x=n.clientX,y.y=n.clientY
+
+                },
+
+                window.onmouseout=function(){
+
+                    y.x=null,y.y=null
+
+                };
+
+            for(var s=[],f=0;d.n>f;f++){
+
+                var h=w()*a,g=w()*c,v=2*w()-1,p=2*w()-1;s.push({x:h,y:g,xa:v,ya:p,max:6e3})
+
+            }
+
+            u=s.concat([y]),
+
+                setTimeout(function(){i()},100)
+
+        }();
+
+    </script>
+<!--    鼠标点击爱心效果-->
+    <script type="text/javascript">
+        /*7Core-CN - 网页鼠标点击特效（爱心）*/
+        !function (e, t, a) {
+            function r() {
+                for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[e].y--, s[
+                    e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x + "px;top:" + s[e].y +
+                    "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e].scale +
+                    ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+                requestAnimationFrame(r)
+            }
+
+            function n() {
+                var t = "function" == typeof e.onclick && e.onclick;
+                e.onclick = function (e) {
+                    t && t(), o(e)
+                }
+            }
+
+            function o(e) {
+                var a = t.createElement("div");
+                a.className = "heart", s.push({
+                    el: a,
+                    x: e.clientX - 5,
+                    y: e.clientY - 5,
+                    scale: 1,
+                    alpha: 1,
+                    color: c()
+                }), t.body.appendChild(a)
+            }
+
+            function i(e) {
+                var a = t.createElement("style");
+                a.type = "text/css";
+                try {
+                    a.appendChild(t.createTextNode(e))
+                } catch (t) {
+                    a.styleSheet.cssText = e
+                }
+                t.getElementsByTagName("head")[0].appendChild(a)
+            }
+
+            function c() {
+                return "rgb(81, 196, 211)"
+            }
+
+            var s = [];
+            e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e.mozRequestAnimationFrame ||
+                e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+                    setTimeout(e, 1e3 / 60)
+                }, i(
+                ".heart{width: 20px;height: 20px;position: fixed;background: #51c4d3;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"
+            ), n(), r()
+        }(window, document);
+    </script>
+<!--    花瓣-->
+    <script th:src="@{/lib/sakura/sakura.js}"></script>
+
+</html>

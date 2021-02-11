@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/editorPicture}" method="post">
+    <input type="text" name="url" required placeholder="输入url" th:value="${picture.getUrl()}">
+    <input type="text" name="name" required placeholder="歌的名字" th:value="${picture.getName()}">
+    <input type="text" name="position" required placeholder="地点" th:value="${picture.getPosition()}">
+    <input type="hidden" name="createtime" required placeholder="时间" th:value="${picture.getCreatetime()}">
+    <input type="text" name="content" required placeholder="歌的句子" th:value="${picture.getContent()}">
+    <input type="hidden" name="id" th:value="${picture.getId()}">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

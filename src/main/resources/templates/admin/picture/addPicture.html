@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>增加图片</title>
+</head>
+<body>
+<form th:action="@{/addPicture}" method="post">
+    <input type="text" name="url" required placeholder="输入url">
+    <input type="text" name="name" required placeholder="歌的名字">
+    <input type="text" name="position" required placeholder="地点">
+    <input type="text" name="content" required placeholder="歌的句子">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

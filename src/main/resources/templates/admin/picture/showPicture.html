@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul th:each="picture:${pictureList}">
+    <li>
+        <p th:text="${picture.getContent()}"></p>
+        <p th:text="${picture.getName()}"></p>
+        <p th:text="${picture.getPosition()}"></p>
+        <p th:text="${picture.getCreatetime()}"></p>
+        <p th:text="${picture.getUrl()}"></p>
+    </li>
+</ul>
+<br/>
+<br/>
+<br/>
+
+<form th:action="@{/editorPicture}" method="get">
+    Name: <input name="name">
+    <input type="submit" value="修改图片">
+</form>
+
+<form th:action="@{/deletePicture}" method="post">
+    Name：<input name="name" type="text">
+    <input type="submit" value="删除图片">
+</form>
+
+</body>
+</html>

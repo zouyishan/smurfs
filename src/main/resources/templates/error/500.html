@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>服务器没了 505~~</title>
+	<link th:href="@{/images/me.png}" rel="icon" type="image/x-ico">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+	<link rel="stylesheet" th:href="@{/css/me.css}">
+	<style>
+		@charset 'utf-8';
+		*{margin:0;padding:0;list-style:none;}
+		a,img{border:none;}
+
+		.top-500 {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			cursor: pointer;
+		}
+
+		.main-500 {
+			width: 600px;
+			height: 375px;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+		}
+
+		.main-in-500 {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			background-image: url("../../static/images/error/img-main-500.png");
+			background-size: 100% 100%;
+		}
+
+		.main-prompt {
+			color: #41ad76;
+			font-family: 'ו';
+			letter-spacing: 1px;
+			font-weight: 600;
+			position: absolute;
+			top: 240px;
+			left: 5px;
+			font-size: 14px;
+			line-height: 22px;
+		}
+
+		.main-link {
+			position: absolute;
+			top: 320px;
+			left: 5px;
+		}
+
+		.main-link a {
+			color: #dd9929;
+			text-decoration: none;
+			border: 1px solid #dd9929;
+			display: inline-block;
+			padding: 3px 15px;
+			border-radius: 8px;
+			float: left;
+			margin-right: 20px;
+		}
+
+		.main-link a:hover {
+			opacity: 0.8;
+		}
+	</style>
+</head>
+<body>
+<img th:src="@{images/top-500.png}" class="top-500" />
+<div class="main-500">
+	<div class="main-in-500">
+		<div class="main-prompt">
+			<p>很抱歉，你来晚了一步，它已经很任性的消失了...</p>
+			<p>你要坚强些，继续发掘别的页面去吧</p>
+		</div>
+		<div class="main-link">
+			<a th:href="@{/index}">返回主页</a>
+		</div>
+	</div>
+</div>
+</body>
+</html>

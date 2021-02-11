@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/admin/editorSay}" method="post">
+    <input type="hidden" name="id" th:value="${say.getId()}">
+    <input type="hidden" name="createtime" th:value="${say.getCreatetime()}">
+    修改内容：<input type="text" name="content">
+    <input type="submit" value="提交修改">
+</form>
+</body>
+</html>

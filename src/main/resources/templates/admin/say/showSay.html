@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul th:each="say:${sayList}">
+    <li>
+       <p th:text="${say.getId()}"></p>
+       <p th:text="${say.getContent()}"></p>
+       <p th:text="${say.getCreatetime()}"></p>
+    </li>
+</ul>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<form th:action="@{/admin/deleteSay}" method="post">
+    要删除的id：<input name="id" type="number">
+    <input type="submit" value="删除say">
+</form>
+<br/>
+<br/>
+<form th:action="@{/admin/editorSay}" method="get">
+    要修改的id：<input name="id" type="number">
+    <input type="submit" value="修改say">
+</form>
+</body>
+</html>

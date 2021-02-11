@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>博文发布</title>
+    <link th:href="@{/images/me.png}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/lib/editormd/css/editormd.min.css}">
+    <link rel="stylesheet" th:href="@{/css/me.css}">
+</head>
+<body>
+<div class="">
+    <div class="ui container">
+        <form id="blog-form" th:action="@{/editorBlog}" method="post">
+            <div class="required field">
+                <div class="ui left labeled input">
+                    <input type="text" name="title" th:value="${blog.getTitle()}">
+                </div>
+            </div>
+
+            <div class="required field">
+                <div class="" id="md-content" style="z-index: 1 !important;">
+                    <textarea  name="content" th:text="${blog.getContent()}"></textarea>
+                </div>
+            </div>
+
+            <div class="two fields">
+                <div class="required field">
+                    <label class="ui teal basic label">分类</label>
+                    <input type="text" name="categoryname" th:value="${blog.getCategoryname()}">
+                </div>
+
+                <div class="required field">
+                    <div class="ui left labeled input">
+                        <label class="ui teal basic label">首图</label>
+                        <input type="text" name="url" th:value="${blog.getUrl()}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="required field">
+                <textarea name="description" maxlength="200" th:text="${blog.getDescription()}"></textarea>
+            </div>
+            <input type="hidden" name="bid" th:value="${blog.getBid()}">
+            <input type="hidden" name="views" th:value="${blog.getViews()}">
+            <input type="hidden" name="createtime" th:value="${blog.getCreatetime()}">
+            <input type="hidden" name="id" th:value="${blog.getId()}">
+
+            <div class="required field">
+                <div class="ui left labeled input">
+                    <input type="submit" value="提交">
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<div th:replace="~{constant/footer.html}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script th:src="@{/lib/editormd/editormd.js}"></script>
+
+<script type="text/javascript">
+    var contentEditor;
+    $(function () {
+        contentEditor = editormd("md-content", {
+            width: "100%",
+            height: 640,
+            syncScrolling: "single",
+            // path: "../../static/lib/editormd/lib/"
+            path: "/lib/editormd/lib/"
+        });
+    });
+</script>
+</body>
+</html>

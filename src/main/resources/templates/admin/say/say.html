@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>主人发布闲记吧</title>
+</head>
+<body>
+<form th:action="@{/admin/say}" method="post">
+    <label>内容</label>
+    <textarea required name="content"></textarea>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

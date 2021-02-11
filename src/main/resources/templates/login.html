@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>欢迎主人</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link th:href="@{/images/me.png}" rel="icon" type="image/x-ico">
+</head>
+
+<body>
+    <div id="login-box" >
+        <h1>Login</h1>
+        <div class="form">
+            <form id="form" method="post" action="/login" onsubmit="return a();">
+              <div class="item">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                <input type="text" id="username" name="username" placeholder="Username" style="outline: none;" required>
+              </div>
+              <div class="item">
+                <i class="fa fa-key" aria-hidden="true"></i>
+                <input type="password" id="password" name="pwd" placeholder="Password" style="outline: none;" required>
+              </div>
+                <input name="remember-me" type="checkbox" style="margin-top: 22px; margin-left: -224px;" >
+                <span style="color: white; font-size: 17px; display: block;
+                    position: relative; top: -22px; left: 200px; width: 51px">记住我</span>
+                <input id="hidepassword" type="hidden" name="password">
+                <input id="zz" class="light-btn" type="submit" style="outline: none; margin-top: 10px" value="提交"/>
+            </form>
+        </div>
+    </div>
+    <script>
+        function a() {
+            let password = document.getElementById('password')
+            let hidepassword = document.getElementById('hidepassword')
+            hidepassword.value = password.value;
+        }
+    </script>
+</body>
+</html>

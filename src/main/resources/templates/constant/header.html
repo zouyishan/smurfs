@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<nav class="gird-header">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <a th:href="@{/index}" style="color: #51c4d3"><h2 class="ui olive item" style="color: #51c4d3">ZYS-Blog</h2></a>
+            <!--<div class="right m-item item m-mobile-hide">-->
+            <a th:href="@{/index}" class="m-item item"><i class="home icon" style="color: #51c4d3"></i><span style="color: #51c4d3">首页</span></a>
+            <a th:href="@{/boke}" class="m-item item"><i class="clone outline icon" style="color: #51c4d3"></i><span style="color: #51c4d3">博客</span></a>
+            <a th:href="@{/say}" class="m-item item"><i class="clock icon" style="color: #51c4d3"></i><span style="color: #51c4d3">时间轴</span></a>
+            <a th:href="@{/music}" class="m-item item"><i class="music icon" style="color: #51c4d3"></i><span style="color: #51c4d3">音乐盒</span></a>
+            <a th:href="@{/message}" class="m-item item"><i class="book icon" style="color: #51c4d3"></i><span style="color: #51c4d3">留言板</span></a>
+            <a th:href="@{/friends}" class="m-item item"><i class="pencil alternate icon" style="color: #51c4d3"></i><span style="color: #51c4d3">友人帐</span></a>
+            <a th:href="@{/picture}" class="m-item item"><i class="image icon" style="color: #51c4d3"></i><span style="color: #51c4d3">照片墙</span></a>
+            <a th:href="@{/about}" class="m-item item"><i class="info icon" style="color: #51c4d3"></i><span style="color: #51c4d3">关于我</span></a>
+            <a th:href="@{/admin}" sec:authorize="isAuthenticated()" class="m-item item"><i class="info icon" style="color: #51c4d3"></i><span style="color: #51c4d3">王上您好</span></a>
+            <!--</div>-->
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+</html>

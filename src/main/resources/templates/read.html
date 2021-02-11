@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title th:text="${blog.getTitle()}"></title>
+    <link rel="stylesheet" th:href="@{/css/typo.css}">
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <link th:href="@{/images/me.png}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/me.css}">
+    <link rel="stylesheet" th:href="@{/css/plugin.css}">
+    <link rel="stylesheet" th:href="@{/lib/prism/prism.css}">
+    <link rel="stylesheet" th:href="@{/lib/tocbot/tocbot.css}">
+    <link rel="stylesheet" th:href="@{/css/zyscomment.css}">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <script>
+        document.addEventListener('visibilitychange', function() {
+            var isHidden = document.hidden;
+            if (isHidden) {
+                document.title = '所以爱会消失对不对';
+            } else {
+                document.title = '[[${blog.getTitle()}]]';
+            }
+        });
+    </script>
+    <style>
+        #ziti {
+            font-family: "楷体", "楷体_GB2312";
+        }
+    </style>
+</head>
+<body>
+<div th:replace="~{constant/header.html}"></div>
+<!--顶部图片-->
+<div class="m-bg-type_outer" style="width: 100%;height: 50%">
+    <img th:src="${blog.getUrl()}" alt="" class="ui m-bg image"
+         style="width: 100%;height: 100%">
+    <div class="m-bg-class_cover">
+        <div class="ui container" style="position: relative ;bottom: -540px;">
+            <h2 class="m-font-size-title-large" align="center" th:text="${blog.getTitle()}" id="ziti" style="font-size: 55px;"></h2>
+            <div class="ui container" align="center">
+
+                <div class="ui horizontal link list" align="center">
+                    <div class="item">
+                    <i class="user outline outline icon m-font-size-text-mini" style="color: #51c4d3; margin-top: -5px;"></i>
+                    <a href="#" th:href="@{/about}" style="color: #51c4d3;font-size: 15px">小邹</a>
+                </div>
+                    <div class="item">
+                        <i class="calendar icon m-font-size-text-mini" style="color: #51c4d3; margin-top: -5px;"></i>
+                        <span th:text="${#dates.format(blog.getCreatetime(),'yyyy-MM-dd')}" class="m-font-size-text-mini" style="color: #51c4d3"></span>
+                    </div>
+                    <div class="item">
+                        <i class="clone icon m-font-size-text-mini" style="color: #51c4d3; margin-top: -5px;"></i>
+                        <span href="#" target="_blank" style="color: #51c4d3;font-size: 16px"
+                              th:text="${blog.getCategoryname()}"></span>
+                    </div>
+                    <div class="item">
+                        <i class="eye icon m-font-size-text-mini" style="color: #51c4d3; margin-top: -5px;"></i>
+                        <span th:text="${blog.getViews()}" class="m-font-size-text-mini" style="color: #51c4d3"></span>
+                    </div>
+                    <div class="item" sec:authorize="isAuthenticated()">
+                        <span class="m-font-size-text-mini" style="color: #51c4d3">
+                            <form th:action="@{/editorBlog}" method="get">
+                                <input th:value="${blog.getBid()}" type="hidden" name="bid">
+                                <input type="submit" value="修改文章">
+                            </form>
+                        </span>
+                    </div>
+                    <div class="item" sec:authorize="isAuthenticated()">
+                        <span class="m-font-size-text-mini" style="color: #51c4d3">
+                            <form th:action="@{/deleteBlog}" method="post">
+                                <input th:value="${blog.getBid()}" type="hidden" name="bid">
+                                <input type="submit" value="删除文章">
+                            </form>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<main role="main" class="container mt-3 p-3 bg-white rounded" style="background: rgba(255,255,255,0.8); position: relative; top: -14px;">
+    <div class="row">
+        <div class="col-md-12 blog-main">
+            <div id="waypoint" class="m-margin- animated fadeIn animate__animated animate__fadeInUp">
+            <div class="ui attached padded segment" style="border: none">
+                <!--中间主要内容部分-->
+                <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+                     th:utext="${blog.content}">
+
+                </div>
+                <div class="ui horizontal divider" style="color: #51c4d3; margin-top: -13px;">end</div>
+            </div>
+            </div>
+
+        </div>
+
+        <div>
+            <div class="ui center aligned basic segment" style="left: 520px; top: -18px;">
+                <button id="payButton" class="ui basic circular button" style="border: 2px solid #51c4d3;"><span style="color: #51c4d3">赞赏</span></button>
+            </div>
+            <div class="ui payQR flowing popup transition hidden">
+                <div class="ui basic label" style="width: 294px; border: 3px solid #51c4d3">
+                    <div class="ui images" style="font-size: inherit !important;">
+                        <div class="image">
+                            <img th:src="@{/images/zhifupay.jpg}" alt=""
+                                 class="ui rounded bordered image" style="width: 120px; border: 3px solid #51c4d3">
+                            <div style="color: #51c4d3">支付宝</div>
+                        </div>
+                        <div class="image">
+                            <img th:src="@{/images/wechatpay.png}" alt=""
+                                 class="ui rounded bordered image" style="width: 123px; border: 3px solid #51c4d3">
+                            <div style="color: #51c4d3">微信</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="goto" class="ui attached positive message" style="top: -25px; left: 2px; height: 180px; width: 1139px; border-radius: 0; box-shadow: none; border-top: 2px solid #51c4d3; border-bottom: 2px solid #51c4d3;
+color: #51c4d3; background-color: white">
+            <!--博客信息-->
+            <div class="ui middle aligned stackable grid">
+                <div class="nine wide column">
+                    <ui class="list">
+                        <li>作者：<span>小邹</span><a th:href="@{/about}"; target="_blank"></a></li>
+                        <li>发表时间：<span
+                                th:text="${#dates.format(blog.getCreatetime(),'yyyy-MM-dd HH:mm')}"></span>
+                        </li>
+                        <li>版权声明：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</li>
+                        <li>转载声明：如果是转载栈主转载的文章，请附上原文链接</li>
+                        <li>公众号转载：请在文末添加作者联系方式</li>
+                    </ui>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ui container m-opacity box-shadow-max">
+        <div id="message-form" class="ui form" align="center">
+            <form th:action="@{/addComment}" method="post">
+                <!--                    留言区-->
+                <div class="field">
+                    <textarea name="content" placeholder="请输入留言信息..." required></textarea>
+                </div>
+                <div class="ui grid">
+                    <!--                    输入姓名-->
+                    <div class="five wide column">
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <div class="ui left icon input">
+                                <i class="user icon" style="color: #51c4d3"></i>
+                                <input type="text" name="name" id="fan" placeholder="Name" required>
+                                <p id="userInfo"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="bid" th:value="${bid}">
+
+                    <div class="right aligned six wide column">
+                        <div class="field m-mobile-wide m-margin-bottom-small">
+                            <button id="messagepost-btn" type="submit" class="ui teal button m-mobile-wide"
+                            style="position: relative; left: 350px"><i class="edit icon"></i>发布</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        </div>
+
+
+        <div th:if="${CommentList.size()!=0}" class="col-md-12 blog-main" style="margin-top: 20px" id="ccc">
+            <div class="my-3 p-3 bg-white rounded shadow-sm" >
+                <h6 class="border-bottom border-gray pb-2 mb-0" id="ziti" style="color: #51c4d3; font-size: 40px; margin-top: -27px">评论列表</h6>
+
+                <div class="container">
+                    <div class="col-xs-12">
+
+                        <div class="commentList">
+                            <ul class="comment">
+                                <li th:each="message:${CommentList}">
+                                    <div class="comment-body" id="comment-1">
+                                        <div class="cheader">
+                                            <div>
+                                                <img th:src="@{/images/me.png}" style="width: 50px; border-radius: 50%;
+                                                    margin-top: 4px; margin-right: 3px; height: 46px;">
+                                                <strong th:text="${message.getName()}" id="ziti" style="color: #51c4d3; font-size: 16px"></strong>
+                                                <div class="timer" style="float: right;">
+                                                    <i class="fa fa-clock-o fa-fw" style="color: #51c4d3"></i>
+                                                    <span class="time" th:text="${#dates.format(message.getCreatetime(), 'yyyy-MM-dd HH:mm:ss')}" style="color: #51c4d3; font-size: 16px"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="content" th:text="${message.getContent()}">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:if="${CommentList.size()==0}" align="center" class="col-md-12 blog-main" style="margin-top: 20px">
+            <div class="my-3 p-3 bg-white rounded shadow-sm">
+                <h6 class="pb-2 mb-0 text-center" style="color: #51c4d3">emmm... 这里暂时还没有评论....</h6>
+            </div>
+        </div>
+    </div>
+
+    <div id="toolbar" class="m-padded m-fixed m-right-bottom">
+        <div class="ui vertical icon buttons ">
+            <button type="button" class="ui toc teal button">目录</button>
+            <a th:href="@{/about}" class="ui teal button">关于</a>
+            <button type="button" class="ui wechat icon button"><i class="weixin icon"></i></button>
+            <div id="hhh" class="ui icon button"><i class="chevron up icon"></i></div>
+        </div>
+    </div>
+
+    <div class="ui toc-container flowing left popup transition hidden" style="width: 250px!important;">
+        <ol class="js-toc">
+
+        </ol>
+    </div>
+
+    <div id="qrcode" class="ui wechatQR flowing popup left transition hidden" style="width: 130px !important;">
+        <img th:src="@{/images/oneStar.jpg}" class="ui rounded image" style="width: 120px;">
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+<script src="../static/lib/qrcode/qrcode.min.js" th:src="@{/lib/qrcode/qrcode.min.js}"></script>
+<script src="../static/lib/prism/prism.js" th:src="@{/lib/prism/prism.js}"></script>
+<script src="../static/lib/tocbot/tocbot.min.js" th:src="@{/lib/tocbot/tocbot.min.js}"></script>
+<script src="../static/lib/waypoints/jquery.waypoints.min.js"
+        th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
+
+<script>
+
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('#payButton').popup({
+        popup: $('.payQR.popup'),
+        on: 'click',
+        position: 'bottom center'
+    });
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+    });
+
+    $('.toc.button').popup({
+        popup: $('.toc-container.popup'),
+        on: 'click',
+        position: 'left center'
+    });
+
+    $(".wechat").popup({
+        popup: $('.wechatQR'),
+        on: 'hover',
+        position: 'left center'
+    });
+
+    hhh.onclick = function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+
+    var waypoint = new Waypoint({
+        element: document.getElementById('waypoint'),
+        handler: function (direction) {
+            if (direction == 'down') {
+                $('#toolbar').show(100);
+            } else {
+                $('#toolbar').hide(500);
+            }
+        }
+    })
+
+</script>
+
+<div th:replace="~{constant/footer.html}"></div>
+</body>
+</html>

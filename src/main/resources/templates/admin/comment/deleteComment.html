@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>删除评论</title>
+</head>
+<body>
+<ul th:each="comment:${CommentList}">
+    <li th:text="${comment.getName()}"></li>
+    <li th:text="${comment.getContent()}"></li>
+    <li th:text="${comment.getId()}"></li>
+    <li th:text="${comment.getCreatetime()}"></li>
+</ul>
+
+<form th:action="@{/deleteComment}" method="post">
+    要删除的id：<input type="number" name="id">
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

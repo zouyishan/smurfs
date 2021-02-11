@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYS-Blog</title>
+    <link th:href="@{/images/me.png}" rel="icon" type="image/x-ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" th:href="@{/css/me.css}">
+</head>
+<body>
+
+<div th:replace="~{constant/header.html}"></div>
+<!--顶部图片-->
+<div class="m-bg-class_outer" style="width: 100%;height: 750px">
+    <img src="https://zouyishan.oss-cn-beijing.aliyuncs.com/images/20210129201024.jpg" alt="" class="ui m-bg image" style="width: 100%;height: 100%" >
+    <div class="m-bg-class_cover" align="center">
+        <div class="m-margin-top-maxx" align="center" id="hot-font">
+            <img class="ui circular image" align="center" th:src="@{/images/me.png}" style="width: 150px;height: 150px;">
+        </div>
+        <div class="m-font-size-title-large" align="center">ZYS-Blog</div>
+
+        <div class="" align="center">
+            <a href="#" class="ui wechat circular icon button"><i style="color: #51c4d3" class="weixin icon"></i></a>
+            <a href="#" class="ui qq circular icon button" data-content="316392836" data-position="bottom center"><i class="qq icon" style="color: #51c4d3"></i></a>
+            <a href="https://github.com/zouyishan" target="_blank" class="ui github circular icon button" data-content="点击跳转GitHub" data-position="bottom center"><i class="github icon" style="color:#51c4d3;"></i></a>
+            <a href="https://www.luogu.com.cn/blog/honey-huangqin0522/" target="_blank" class="ui csdn circular icon button" data-content="点击跳转洛谷" data-position="bottom center"><i style="color: #51c4d3" class="copyright outline icon"></i></a>
+            <a href="#" class="ui email circular icon button" data-content="2983748714@qq.com" data-position="bottom center"><i class="envelope  icon" style="color: #51c4d3"></i></a>
+        </div>
+
+        <div class="ui wechat-qr flowing popup transition hidden">
+            <img th:src="@{/images/oneStar.jpg}" alt="" class="ui rounded image" style="width: 110px">
+            <div align="center">微信</div>
+        </div>
+
+        <div class="ui qq-qr flowing popup transition hidden">
+            <img th:src="@{/images/QQ-question.jpg}" alt="" class="ui rounded image" style="width: 110px">
+            <div align="center">QQ</div>
+        </div>
+
+        <h3 class="m-font-size-text" align="center" style="color: #51c4d3;">不是看到希望才坚持，而是坚持了才会有希望</h3>
+        <hr style="width: 30%; background-color: #51c4d3; border: none; height: 2px;">
+        <h5 class="m-font-size-text-init-title m-margin-top-large" style="color: #51c4d3;">大圣，此去欲何？</h5>
+        <h5 class="m-font-size-text-init-title" style="color: #51c4d3">踏南天，碎凌霄</h5>
+        <h5 class="m-font-size-text-init-title" style="color: #51c4d3">若一去不回......</h5>
+        <h5 class="m-font-size-text-init-title " style="color: #51c4d3">便一去不回</h5>
+
+        <div id="waypoint" class="ui m-margin-top-large" align="center">
+            <a id="hot-font" th:href="@{/index}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide"><i class="home icon" style="color: #51c4d3"></i><span style="color: #51c4d3">首页</span></a>
+            <a id="hot-font" th:href="@{/boke}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide" ><i class="clone outline icon" style="color: #51c4d3"></i><span style="color: #51c4d3">博客</span></a>
+            <a id="hot-font" th:href="@{/say}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide"  ><i class="clock icon" style="color: #51c4d3"></i><span style="color: #51c4d3">时间轴</span></a>
+            <a id="hot-font" th:href="@{/music}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide" ><i class="music icon" style="color: #51c4d3"></i><span style="color: #51c4d3">音乐盒</span></a>
+            <a id="hot-font" th:href="@{/message}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide"><i class="book icon" style="color: #51c4d3"></i><span style="color: #51c4d3">留言板</span></a>
+            <a id="hot-font" th:href="@{/friends}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide" ><i class="pencil alternate icon" style="color: #51c4d3"></i><span style="color: #51c4d3">友人帐</span></a>
+            <a id="hot-font" th:href="@{/picture}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide" ><i class="image icon" style="color: #51c4d3"></i><span style="color: #51c4d3">照片墙</span></a>
+            <a id="hot-font" th:href="@{/about}" class="ui circular icon button m-opacity-small m-item item m-mobile-hide"><i class="info icon" style="color: #51c4d3"></i><span style="color: #51c4d3">关于我</span></a>
+        </div>
+        <div class="hiddenDiv"></div>
+    </div>
+
+</div>
+
+<!--最新推荐-->
+<div class="ui m-padded-tb-large">
+    <div class="ui m-container-small m-opacity" id="hot-font">
+        <div class="ui secondary segment " style="color: #51c4d3;" align="center">
+            <i class="bookmark icon" style="color: #51c4d3;"></i>个人小站
+        </div>
+    </div>
+
+    <div class="ui stackable m-container-mini m-opacity grid">
+        <div class="m-margin-tb-tiny four wide column" id="hot-font">
+            <a href="https://www.luogu.com.cn/blog/honey-huangqin0522/" class="class_outer" target="_blank" style="width: 330px; height: 180px;">
+                <img src="https://zouyishan.oss-cn-beijing.aliyuncs.com/images/20210122155500.jpg" alt="" class="ui rounded image">
+                <span class="class_cover" >
+                     <h4 class="m-font-size-blog-text m-margin-tb-tiny" style="color: #51c4d3">洛谷博客</h4>
+                </span>
+            </a>
+        </div>
+		<div class="m-margin-tb-tiny four wide column" id="hot-font">
+            <a href="https://github.com/zouyishan" class="class_outer" target="_blank" style="width: 330px; height: 180px;">
+                <img src="https://zouyishan.oss-cn-beijing.aliyuncs.com/images/20210126153951.jpg" alt="" class="ui rounded image">
+                <span class="class_cover" >
+                     <h4 class="m-font-size-blog-text m-margin-tb-tiny" style="color: #51c4d3">GitHub主页</h4>
+                  </span>
+            </a>
+        </div>
+		<div class="m-margin-tb-tiny four wide column" id="hot-font">
+            <a href="https://www.nowcoder.com/profile/384048259" class="class_outer" target="_blank" style="width: 330px; height: 180px;">
+                <img src="https://zouyishan.oss-cn-beijing.aliyuncs.com/images/20210126154043.jpg" alt="" class="ui rounded image">
+                <span class="class_cover" >
+                     <h4 class="m-font-size-blog-text m-margin-tb-tiny" style="color: #51c4d3">牛客主页</h4>
+                  </span>
+            </a>
+        </div>
+		<div class="m-margin-tb-tiny four wide column" id="hot-font">
+            <a href="#" class="class_outer" target="_blank" style="width: 330px; height: 180px;">
+                <img src="https://zouyishan.oss-cn-beijing.aliyuncs.com/images/20210126154112.png" alt="" class="ui rounded image">
+                <span class="class_cover" >
+                     <h4 class="m-font-size-blog-text m-margin-tb-tiny" style="color: #51c4d3">ZYS-Blog</h4>
+                  </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!--中间内容-->
+<div class="m-padded-tb-big animated fadeIn">
+    <div class="ui container" >
+        <div class="ui stackable grid" >
+            <!--博客内容-->
+            <div class="ui vertical segment">
+                <div class="ui m-container-small m-opacity" id="hot-font">
+                    <div class="ui secondary segment " align="center" style="color: #51c4d3">
+                        <i class="bookmark icon" style="color: #51c4d3"></i>最新文章
+                    </div>
+                </div>
+
+                <!--博文列表-->
+                <div th:each="blog:${blogList}" class="ui padded segment m-padded-tb-large m-opacity" style="background: rgba(255,255,255,0.5);" id="hot-font">
+                    <div class="ui large aligned mobile reversed stackable grid" >
+                        <!--博文信息-->
+                        <div class="eleven wide column ">
+                            <h3 class="ui header" >
+                            <a th:href="@{'/read/' + ${blog.getBid()}}" th:text="${blog.getTitle()}" target="_blank" class="m-black" ></a></h3>
+                            <div class="m-text m-margin-top-max" style="overflow: hidden;text-overflow:ellipsis; display: block; height: 50px; width: 640px" th:text="${blog.getDescription()}"></div>
+
+                            <div class="ui m-margin-top-max grid">
+                                <div class="eleven wide column">
+                                    <div class="ui mini horizontal link list">
+                                        <div class="item">
+                                            <div class="content"><p class="header" style="color: #5698c3">小邹</p></div>
+                                        </div>
+                                        <div class="item">
+                                            <i class="calendar icon" style="color: #5698c3"></i><span style="color: #5698c3" th:text="${#dates.format(blog.getCreatetime(), 'yyyy-MM-dd')}"></span>
+                                        </div>
+                                        <div class="item">
+                                            <i class="eye icon" style="color: #5698c3"></i> <span style="color: #5698c3" th:text="${blog.getViews()}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right aligned five wide column">
+                                    <p th:text="${blog.getCategoryname()}" class="ui teal basic label m-padded-tiny m-text-thin"></p>
+                                </div>
+                            </div>
+                        </div>
+
+<!--                        博文图片-->
+                        <div class="five wide column">
+                            <img th:src="${blog.getUrl()}" alt="" class="ui rounded image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!--分页-->
+            <div class="ui bottom attached segment m-opacity stackable grid" id="hot-font">
+                <div class="three wide column" align="center">
+                    <span th:if="${pageParam.hasPrevious()==true}">
+                        <a class="page-item" th:href="@{'/index/' + ${pageParam.getCurrent() - 1} + '/6'}">上一页</a>
+                    </span>
+<!--                    <span ></span>-->
+                </div>
+
+                <div class="ten wide column" align="center">
+
+                </div>
+
+                <div class="three wide column" align="center">
+                    <span th:if="${pageParam.hasNext()==true}">
+                        <a class="page-item" th:href="@{'/index/' + ${pageParam.getCurrent() + 1} + '/6'}" >下一页</a>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!--置顶图标-->
+<div class="m-padded-tb-large m-fixed m-right-bottom" style="color: #51c4d3">
+    <a href="#" class="ui icon button" style="color: #51c4d3"><i class="chevron up icon" style="color: #51c4d3"></i> </a>
+</div>
+
+<br/>
+<br/>
+<br/>
+
+<div th:replace="~{constant/footer.html}"></div>
+
+
+</body>
+</html>

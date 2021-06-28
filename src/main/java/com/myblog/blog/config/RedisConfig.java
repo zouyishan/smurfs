@@ -8,6 +8,7 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 
 @Configuration
 @EnableCaching //缓存启动注解
@@ -23,7 +24,6 @@ public class RedisConfig {
      */
     @Bean
     public RedisTemplate<String, Object> redisTemplate() {
-
         RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(lettuceConnectionFactory);
 
